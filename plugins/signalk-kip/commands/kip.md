@@ -22,12 +22,18 @@ Load the skill knowledge base by reading these files:
 
 ### Workflow
 
+#### Phase 0: Determine Signal K Server URL
+
+Check if the Signal K server URL was provided in the user's request or is available in conversation context. If not, ask the user: "What is your Signal K server URL? (e.g. `http://localhost:3000` or `http://nmea.local:3000`)"
+
+Use this URL as `{SIGNALK_URL}` throughout the workflow.
+
 #### Phase 1: Discover Available Data
 
-Query the local Signal K server to find available paths:
+Query the Signal K server to find available paths:
 
 ```bash
-curl -s http://localhost:3000/signalk/v1/api/vessels/self 2>/dev/null | python3 -c "
+curl -s {SIGNALK_URL}/signalk/v1/api/vessels/self 2>/dev/null | python3 -c "
 import json, sys
 data = json.load(sys.stdin)
 def get_paths(obj, prefix=''):
@@ -60,7 +66,7 @@ mcp__chrome-devtools__list_pages
 If not at `/@mxtommy/kip`, navigate there:
 
 ```
-mcp__chrome-devtools__navigate_page({ type: 'url', url: 'http://localhost:3000/@mxtommy/kip' })
+mcp__chrome-devtools__navigate_page({ type: 'url', url: '{SIGNALK_URL}/@mxtommy/kip' })
 ```
 
 #### Phase 4: Read Current Config
@@ -133,7 +139,7 @@ Report the results:
 - **DOM-first**: Use `evaluate_script` for all validation. Screenshots only as final spot-check if explicitly requested.
 - **Canvas rendering**: KIP widgets render to `<canvas>`, not DOM text. Validate by canvas element presence, not text content.
 - **Config source of truth**: `localStorage.getItem('dashboardsConfig')` is always authoritative.
-- **Data flow**: Confirm paths exist via `curl localhost:3000/signalk/v1/api/vessels/self/{path}/value`.
+- **Data flow**: Confirm paths exist via `curl {SIGNALK_URL}/signalk/v1/api/vessels/self/{path}/value`.
 
 ### Error Recovery
 

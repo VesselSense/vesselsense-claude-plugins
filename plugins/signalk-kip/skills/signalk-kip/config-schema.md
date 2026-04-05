@@ -167,7 +167,7 @@ Common icon keys for dashboard identification:
 
 ## KIP Plugin REST API
 
-Base URL: `http://localhost:3000/plugins/kip/`
+Base URL: `{SIGNALK_URL}/plugins/kip/`
 
 ### Display Management
 
