@@ -1,0 +1,9 @@
+{
+  "name": "signalk-sensesp",
+  "description": "SensESP framework reference — ESP32 custom marine sensor development with PlatformIO, transforms, and SignalK integration",
+  "version": "1.0.0",
+  "author": {
+    "name": "VesselSense",
+    "url": "https://github.com/VesselSense"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "wilhelmsk-dashboard",
+  "description": "WilhelmSK dashboard layout generation — map SignalK paths to gauge types, generate layouts for iPhone and iPad",
+  "version": "1.0.0",
+  "author": {
+    "name": "VesselSense",
+    "url": "https://github.com/VesselSense"
+  }
+}
